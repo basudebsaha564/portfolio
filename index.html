@@ -331,13 +331,19 @@
     text-align: left;
   }
 
-  .modal-title {
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--modal-title-color);
-    margin-bottom: 4px;
-  }
+ .modal-title {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--modal-title-color);
+  margin-bottom: 4px;
+  text-decoration: none;
+}
+
+.modal-title:hover {
+  text-decoration: underline;
+}
 
   .modal-description {
     font-size: 0.88rem;
