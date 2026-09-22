@@ -480,15 +480,23 @@
     modalImg.src = c.src;
     modalImg.alt = c.title;
     modalTitle.textContent = c.title;
-    modalDesc.textContent = c.desc;
-    if (c.link) {
+modalDesc.textContent = c.desc;
+
+if (c.link) {
   modalTitle.href = c.link;
-  modalTitle.style.display = 'inline-block';
+  modalTitle.target = "_blank";
+  modalTitle.rel = "noopener";
+  modalTitle.style.pointerEvents = "auto";
+  modalTitle.style.cursor = "pointer";
 } else {
-  modalTitle.removeAttribute('href');
-  modalTitle.style.display = 'none';
+  modalTitle.removeAttribute("href");
+  modalTitle.removeAttribute("target");
+  modalTitle.removeAttribute("rel");
+  modalTitle.style.pointerEvents = "none";
+  modalTitle.style.cursor = "default";
 }
-    lastFocused = document.activeElement;
+
+lastFocused = document.activeElement;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     modalClose.focus();
