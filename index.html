@@ -421,7 +421,7 @@
   <div class="modal-content">
     <img src="" id="modalImg" alt="">
     <div class="modal-info">
-      <div class="modal-title" id="modalTitle"></div>
+      <a class="modal-title" id="modalTitle" href="#" target="_blank" rel="noopener"></a>
       <div class="modal-description" id="modalDesc"></div>
     </div>
   </div>
@@ -481,6 +481,13 @@
     modalImg.alt = c.title;
     modalTitle.textContent = c.title;
     modalDesc.textContent = c.desc;
+    if (c.link) {
+  modalTitle.href = c.link;
+  modalTitle.style.display = 'inline-block';
+} else {
+  modalTitle.removeAttribute('href');
+  modalTitle.style.display = 'none';
+}
     lastFocused = document.activeElement;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
