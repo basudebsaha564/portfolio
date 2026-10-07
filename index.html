@@ -9,19 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<script>
-  (function() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'twilight') {
-      document.documentElement.classList.add('twilight-mode');
-    } else if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark-mode');
-    } else {
-      document.documentElement.classList.add('light-mode');
-    }
-  })();
-</script>
-
 <style>
   :root {
     --sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -29,36 +16,7 @@
     --margin: clamp(10px, 2vw, 20px);
   }
 
-  html.light-mode {
-    /* 1. Light Theme */
-    --bg: #faf9f6;
-    --bg-raised: #efeee9;
-    --header-bg: rgba(250, 249, 246, 0.82);
-    --line: #e3e1da;
-    --ink: #17161a;
-    --ink-dim: #75747a;
-    --accent: #f5e400;
-    --accent-ink: #0b0b0c;
-    --modal-title-color: #f4f2ee;
-    --modal-desc-color: #96959b;
-  }
-
-  html.twilight-mode {
-    /* 2. Twilight Theme (Dark Purple BG/Header, Lavender Contact Box) */
-    --bg: #221929;
-    --bg-raised: #35263f;
-    --header-bg: rgba(34, 25, 41, 0.85);
-    --line: #463354;
-    --ink: #ffffff;
-    --ink-dim: #cca8e9;
-    --accent: #e9d5ff;
-    --accent-ink: #221929;
-    --modal-title-color: #ffffff;
-    --modal-desc-color: #cca8e9;
-  }
-
-  html.dark-mode {
-    /* 3. Dark Theme */
+  html {
     --bg: #0b0b0c;
     --bg-raised: #151517;
     --header-bg: rgba(11, 11, 12, 0.82);
@@ -132,61 +90,20 @@
 
   nav a:hover { color: var(--ink); }
 
-  /* ---------- Minimalist SVG Switch ---------- */
-  .theme-toggle {
-    all: unset;
-    cursor: pointer;
-    color: var(--ink-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px;
-    border-radius: 4px;
-    transition: color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .theme-toggle:hover {
-    color: var(--ink);
-    opacity: 0.85;
-  }
-
-  .theme-toggle svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    stroke-width: 1.75;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-  }
-
-  /* Icon visibility mapping */
-  .icon-sparkle { display: block; }
-  .icon-moon { display: none; }
-  .icon-sun { display: none; }
-
-  html.twilight-mode .icon-sparkle { display: none; }
-  html.twilight-mode .icon-moon { display: block; }
-  html.twilight-mode .icon-sun { display: none; }
-
-  html.dark-mode .icon-sparkle { display: none; }
-  html.dark-mode .icon-moon { display: none; }
-  html.dark-mode .icon-sun { display: block; }
-
   /* ---------- Gallery ---------- */
   #work { padding: 0 var(--gutter) 8px; }
 
- .gallery {
-  column-count: 3;
-  column-gap: var(--gutter);
-}
-
-/* Desktop: 4 columns */
-@media (min-width: 1024px) {
   .gallery {
-    column-count: 5;
+    column-count: 3;
+    column-gap: var(--gutter);
   }
-}
+
+  /* Desktop: 4 columns */
+  @media (min-width: 1024px) {
+    .gallery {
+      column-count: 5;
+    }
+  }
 
   .gallery-item {
     break-inside: avoid;
@@ -338,19 +255,19 @@
     text-align: left;
   }
 
- .modal-title {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--modal-title-color);
-  margin-bottom: 4px;
-  text-decoration: none;
-}
+  .modal-title {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--modal-title-color);
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
 
-.modal-title:hover {
-  text-decoration: underline;
-}
+  .modal-title:hover {
+    text-decoration: underline;
+  }
 
   .modal-description {
     font-size: 0.88rem;
@@ -376,36 +293,16 @@
   .modal-close:hover { color: var(--modal-title-color); }
 </style>
 </head>
+
 <body>
 
 <header id="siteHeader">
   <a class="logo" href="#top" id="top">Basu Saha</a>
+
   <nav>
     <a href="#work">Work</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <!-- Sparkle Icon: Light -> Twilight -->
-      <svg class="icon-sparkle" viewBox="0 0 24 24">
-        <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"></path>
-      </svg>
-      <!-- Moon Icon: Twilight -> Dark -->
-      <svg class="icon-moon" viewBox="0 0 24 24">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-      <!-- Sun Icon: Dark -> Light -->
-      <svg class="icon-sun" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-    </button>
   </nav>
 </header>
 
@@ -420,8 +317,16 @@
 
 <section id="contact">
   <div class="eyebrow">Contact</div>
-  <div class="contact-email"><a href="mailto:basudebsaha564@gmail.com">basudebsaha564@gmail.com</a></div>
-  <a class="contact-link" href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw==" target="_blank" rel="noopener">Instagram ↗</a>
+  <div class="contact-email">
+    <a href="mailto:basudebsaha564@gmail.com">basudebsaha564@gmail.com</a>
+  </div>
+
+  <a class="contact-link"
+     href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw=="
+     target="_blank"
+     rel="noopener">
+    Instagram ↗
+  </a>
 </section>
 
 <footer>
@@ -429,50 +334,81 @@
   <div>Book Cover Designer</div>
 </footer>
 
-<div class="modal-overlay" id="imageModal" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="modal-overlay"
+     id="imageModal"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true">
+
   <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+
   <div class="modal-content">
     <img src="" id="modalImg" alt="">
+
     <div class="modal-info">
-      <a class="modal-title" id="modalTitle" href="#" target="_blank" rel="noopener"></a>
+      <a class="modal-title"
+         id="modalTitle"
+         href="#"
+         target="_blank"
+         rel="noopener"></a>
+
       <div class="modal-description" id="modalDesc"></div>
     </div>
   </div>
 </div>
 
 <script>
-  const themeToggleBtn = document.getElementById('themeToggle');
-  const htmlEl = document.documentElement;
-
-  themeToggleBtn.addEventListener('click', () => {
-    if (htmlEl.classList.contains('light-mode')) {
-      htmlEl.classList.remove('light-mode');
-      htmlEl.classList.add('twilight-mode');
-      localStorage.setItem('theme', 'twilight');
-    } else if (htmlEl.classList.contains('twilight-mode')) {
-      htmlEl.classList.remove('twilight-mode');
-      htmlEl.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      htmlEl.classList.remove('dark-mode');
-      htmlEl.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  });
-
   const covers = [
-    { src: "astralabyssconcept.webp", title: "Astral Abyss • Nelson Mwova", desc: "Concept Cover design." },
-    { src: "drivered.webp", title: "Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk", desc: "CConcept Cover design." },
-    { src: "quiet.webp", title: "Quiet Ruin", desc: "Cover Design for an upcoming debut novel" },
-    { src: "Deoliphoto.webp", title: "The Night Train at Deoli • Ruskin Bond", desc: "Concept cover design for one of my most favourite short stories." },
-    { src: "Deoli.webp", title: "The Night Train at Deoli • Ruskin Bond", desc: "Concept cover design for one of my most favourite short stories." },
-    { src: "theeyeshaveit.webp", title: "The Eyes Have It • Ruskin Bond", desc: "Concept cover design." },
-    { src: "astralabyss.webp", title: "Astral Abyss • Nelson Mwova", desc: "Official cover design.", link: "https://amzn.in/d/0fK2A5ND" },
-    { src: "whitenight.webp", title: "WHite NIght • Fyodor Dostoevsky", desc: "Concept cover design." },
-    { src: "Untitled_Artwork-10.webp", title: "Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk", desc: "Concept Cover design." }
+    {
+      src: "astralabyssconcept.webp",
+      title: "Astral Abyss • Nelson Mwova",
+      desc: "Concept Cover design."
+    },
+    {
+      src: "drivered.webp",
+      title: "Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk",
+      desc: "CConcept Cover design."
+    },
+    {
+      src: "quiet.webp",
+      title: "Quiet Ruin",
+      desc: "Cover Design for an upcoming debut novel"
+    },
+    {
+      src: "Deoliphoto.webp",
+      title: "The Night Train at Deoli • Ruskin Bond",
+      desc: "Concept cover design for one of my most favourite short stories."
+    },
+    {
+      src: "Deoli.webp",
+      title: "The Night Train at Deoli • Ruskin Bond",
+      desc: "Concept cover design for one of my most favourite short stories."
+    },
+    {
+      src: "theeyeshaveit.webp",
+      title: "The Eyes Have It • Ruskin Bond",
+      desc: "Concept cover design."
+    },
+    {
+      src: "astralabyss.webp",
+      title: "Astral Abyss • Nelson Mwova",
+      desc: "Official cover design.",
+      link: "https://amzn.in/d/0fK2A5ND"
+    },
+    {
+      src: "whitenight.webp",
+      title: "WHite NIght • Fyodor Dostoevsky",
+      desc: "Concept cover design."
+    },
+    {
+      src: "Untitled_Artwork-10.webp",
+      title: "Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk",
+      desc: "Concept Cover design."
+    }
   ];
 
   const gallery = document.getElementById('gallery');
+
   gallery.innerHTML = covers.map((c, i) => `
     <div class="gallery-item">
       <button data-index="${i}" aria-label="View ${c.title}">
@@ -486,57 +422,70 @@
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
   const modalClose = document.getElementById('modalClose');
+
   let lastFocused = null;
 
   function openModal(index) {
     const c = covers[index];
+
     modalImg.src = c.src;
     modalImg.alt = c.title;
     modalTitle.textContent = c.title;
-modalDesc.textContent = c.desc;
+    modalDesc.textContent = c.desc;
 
-if (c.link) {
-  modalTitle.href = c.link;
-  modalTitle.target = "_blank";
-  modalTitle.rel = "noopener";
-  modalTitle.style.pointerEvents = "auto";
-  modalTitle.style.cursor = "pointer";
-} else {
-  modalTitle.removeAttribute("href");
-  modalTitle.removeAttribute("target");
-  modalTitle.removeAttribute("rel");
-  modalTitle.style.pointerEvents = "none";
-  modalTitle.style.cursor = "default";
-}
+    if (c.link) {
+      modalTitle.href = c.link;
+      modalTitle.target = "_blank";
+      modalTitle.rel = "noopener";
+      modalTitle.style.pointerEvents = "auto";
+      modalTitle.style.cursor = "pointer";
+    } else {
+      modalTitle.removeAttribute("href");
+      modalTitle.removeAttribute("target");
+      modalTitle.removeAttribute("rel");
+      modalTitle.style.pointerEvents = "none";
+      modalTitle.style.cursor = "default";
+    }
 
-lastFocused = document.activeElement;
+    lastFocused = document.activeElement;
+
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
+
     modalClose.focus();
   }
 
   function closeModal() {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
+
     if (lastFocused) lastFocused.focus();
   }
 
   gallery.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-index]');
-    if (btn) openModal(Number(btn.dataset.index));
+
+    if (btn) {
+      openModal(Number(btn.dataset.index));
+    }
   });
 
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+    if (e.target === modal) {
+      closeModal();
+    }
   });
 
   modalClose.addEventListener('click', closeModal);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
   });
 
   const header = document.getElementById('siteHeader');
+
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
