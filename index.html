@@ -176,10 +176,17 @@
   /* ---------- Gallery ---------- */
   #work { padding: 0 var(--gutter) 8px; }
 
+ .gallery {
+  column-count: 3;
+  column-gap: var(--gutter);
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 1024px) {
   .gallery {
-    column-count: 3;
-    column-gap: var(--gutter);
+    column-count: 4;
   }
+}
 
   .gallery-item {
     break-inside: avoid;
