@@ -90,48 +90,61 @@
 
   nav a:hover { color: var(--ink); }
 
-  /* ---------- Gallery ---------- */
-  #work { padding: 0 var(--gutter) 8px; }
+/* ---------- Gallery ---------- */
+#work {
+  padding: 8px;
+}
 
-  .gallery {
-    column-count: 3;
-    column-gap: var(--gutter);
+.gallery {
+  column-count: 3;
+  column-gap: 8px;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-raised);
+  transition: background 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1),
+              opacity 0.4s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: scale(1.03);
+}
+
+.gallery-item button {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* ---------- Desktop: 5 columns ---------- */
+@media (min-width: 1024px) {
+  #work {
+    padding: 12px;
   }
 
-  /* Desktop: 4 columns */
-  @media (min-width: 1024px) {
-    .gallery {
-      column-count: 5;
-    }
+  .gallery {
+    column-count: 5;
+    column-gap: 12px;
   }
 
   .gallery-item {
-    break-inside: avoid;
-    margin-bottom: var(--gutter);
-    cursor: pointer;
-    border-radius: 3px;
-    overflow: hidden;
-    background: var(--bg-raised);
-    transition: background 0.3s ease;
+    margin-bottom: 12px;
   }
-
-  .gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1), opacity 0.4s ease;
-  }
-
-  .gallery-item:hover img,
-  .gallery-item:focus-visible img {
-    transform: scale(1.03);
-  }
-
-  .gallery-item button {
-    all: unset;
-    display: block;
-    cursor: pointer;
-  }
+}
 
   /* ---------- About ---------- */
   #about {
