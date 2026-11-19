@@ -1,765 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="description" content="Basu Saha — independent book cover designer crafting visual identities for authors and publishers.">
-
 <title>Basu Saha — Book Cover Designer</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/webp" href="logo.webp">
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<!-- Structured Data for Google Search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Basu Saha",
+  "jobTitle": "Book Cover Designer",
+  "email": "mailto:basusahadesign@gmail.com",
+  "sameAs": [
+    "https://www.instagram.com/basusaha_"
+  ],
+  "description": "Independent book cover designer crafting visual identities for authors and publishers."
+}
+</script>
 
 <style>
-
 :root {
-
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-
   --gutter: clamp(6px, 1.2vw, 10px);
   --margin: clamp(10px, 2vw, 20px);
 
   /* Light theme */
-
   --bg: #faf9f6;
   --bg-raised: #efeee9;
-
   --header-bg: rgba(250, 249, 246, 0.82);
-
   --line: #e3e1da;
-
   --ink: #17161a;
   --ink-dim: #75747a;
-
   --accent: #f5e400;
   --accent-ink: #0b0b0c;
-
   --modal-title-color: #f4f2ee;
   --modal-desc-color: #96959b;
-
 }
-
 
 * {
   box-sizing: border-box;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
-
   margin: 0;
-
   background: var(--bg);
-
   color: var(--ink);
-
   font-family: var(--sans);
-
   line-height: 1.5;
-
   -webkit-font-smoothing: antialiased;
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
-
+  transition: background 0.3s ease, color 0.3s ease;
 }
-
 
 a {
   color: inherit;
 }
 
-
 :focus-visible {
-
   outline: 2px solid var(--accent);
-
   outline-offset: 3px;
-
 }
-
 
 @media (prefers-reduced-motion: reduce) {
-
   * {
-
     animation-duration: 0.01ms !important;
-
     transition-duration: 0.01ms !important;
-
   }
-
 }
-
 
 /* ---------- Header ---------- */
 
-
 header {
-
   position: sticky;
-
   top: 0;
-
   z-index: 100;
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   padding: 16px var(--margin);
-
   background: var(--header-bg);
-
   backdrop-filter: blur(14px);
-
   -webkit-backdrop-filter: blur(14px);
-
   border-bottom: 1px solid transparent;
-
-  transition:
-    border-color 0.3s ease,
-    background 0.3s ease;
-
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
-
 
 header.scrolled {
-
   border-bottom-color: var(--line);
-
 }
-
-
-/* Logo + brand name */
 
 .logo {
-
   display: flex;
-
   align-items: center;
-
   gap: 9px;
-
   font-family: var(--sans);
-
   font-size: 1.05rem;
-
   font-weight: 600;
-
   letter-spacing: -0.01em;
-
   text-decoration: none;
-
 }
-
 
 .logo img {
-
   width: 28px;
-
   height: 28px;
-
   border-radius: 50%;
-
   object-fit: cover;
-
   display: block;
-
 }
-
 
 nav {
-
   display: flex;
-
   align-items: center;
-
   gap: 24px;
-
 }
-
 
 nav a {
-
   color: var(--ink-dim);
-
   text-decoration: none;
-
   font-size: 0.9rem;
-
   transition: color 0.2s ease;
-
 }
-
 
 nav a:hover {
-
   color: var(--ink);
-
 }
-
 
 /* ---------- Gallery ---------- */
 
-
 #work {
-
   padding: 8px;
-
 }
-
 
 .gallery {
-
   column-count: 3;
-
   column-gap: 8px;
-
 }
-
 
 .gallery-item {
-
   break-inside: avoid;
-
   margin-bottom: 8px;
-
   cursor: pointer;
-
-  border-radius: 8px;
-
+  border-radius: 0;
   overflow: hidden;
-
   background: var(--bg-raised);
-
   transition: background 0.3s ease;
-
 }
-
 
 .gallery-item img {
-
   width: 100%;
-
   height: auto;
-
   display: block;
-
-  transition:
-    transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1),
-    opacity 0.4s ease;
-
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1), opacity 0.4s ease;
 }
-
 
 .gallery-item:hover img,
-.gallery-item:focus-visible img {
-
+.gallery-item:focus-within img {
   transform: scale(1.03);
-
 }
-
 
 .gallery-item button {
-
   all: unset;
-
   display: block;
-
   width: 100%;
-
   cursor: pointer;
-
 }
-
 
 /* ---------- Desktop: 5 columns ---------- */
 
-
 @media (min-width: 1024px) {
-
-
   #work {
-
     padding: 16px;
-
   }
-
 
   .gallery {
-
     column-count: 5;
-
     column-gap: 16px;
-
   }
-
 
   .gallery-item {
-
     margin-bottom: 16px;
-
   }
-
 }
-
 
 /* ---------- About ---------- */
 
-
 #about {
-
   padding: clamp(56px, 10vw, 100px) var(--margin);
-
   border-top: 1px solid var(--line);
-
   max-width: 720px;
-
   transition: border-color 0.3s ease;
-
 }
-
 
 .eyebrow {
-
   font-size: 0.8rem;
-
   color: var(--ink-dim);
-
   margin-bottom: 16px;
-
 }
-
 
 .about-text {
-
   font-family: var(--sans);
-
   font-size: clamp(1.2rem, 2.4vw, 1.5rem);
-
   font-weight: 400;
-
   line-height: 1.5;
-
   color: var(--ink);
-
+  margin: 0;
 }
-
 
 /* ---------- Contact ---------- */
 
-
 #contact {
-
   background: var(--accent);
-
   color: var(--accent-ink);
-
   padding: clamp(56px, 10vw, 100px) var(--margin);
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
-
+  transition: background 0.3s ease, color 0.3s ease;
 }
-
 
 #contact .eyebrow {
-
   color: var(--accent-ink);
-
   opacity: 0.7;
-
 }
-
 
 .contact-email {
-
   font-family: var(--sans);
-
   font-size: clamp(1.3rem, 3vw, 1.8rem);
-
   font-weight: 600;
-
   letter-spacing: -0.01em;
-
   margin-bottom: 18px;
-
   word-break: break-word;
-
 }
-
 
 .contact-email a {
-
   text-decoration: none;
-
 }
-
 
 .contact-email a:hover {
-
   text-decoration: underline;
-
 }
-
 
 .contact-link {
-
   display: inline-flex;
-
   align-items: center;
-
   gap: 6px;
-
   font-size: 0.95rem;
-
   font-weight: 500;
-
   color: var(--accent-ink);
-
   text-decoration: none;
-
   border-bottom: 1px solid currentColor;
-
   padding-bottom: 2px;
-
   transition: opacity 0.2s ease;
-
 }
-
 
 .contact-link:hover {
-
   opacity: 0.65;
-
 }
-
 
 /* ---------- Footer ---------- */
 
-
 footer {
-
   display: flex;
-
   justify-content: space-between;
-
   padding: 16px var(--margin);
-
   background: var(--bg);
-
   color: var(--ink-dim);
-
   font-size: 0.78rem;
-
   transition: background 0.3s ease;
-
 }
-
 
 /* ---------- Lightbox ---------- */
 
-
 .modal-overlay {
-
   position: fixed;
-
   inset: 0;
-
   background: rgba(6, 6, 7, 0.9);
-
   backdrop-filter: blur(10px);
-
   -webkit-backdrop-filter: blur(10px);
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   z-index: 1000;
-
   opacity: 0;
-
   pointer-events: none;
-
   transition: opacity 0.25s ease;
-
   padding: 24px;
-
 }
-
 
 .modal-overlay.active {
-
   opacity: 1;
-
   pointer-events: auto;
-
 }
-
 
 .modal-content {
-
   width: fit-content;
-
   max-width: 440px;
-
   max-height: 90vh;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
-
   transform: translateY(8px) scale(0.98);
-
   transition: transform 0.25s ease;
-
 }
-
 
 .modal-overlay.active .modal-content {
-
   transform: translateY(0) scale(1);
-
 }
-
 
 .modal-content img {
-
   width: auto;
-
   max-width: 100%;
-
   max-height: 68vh;
-
   object-fit: contain;
-
-  border-radius: 3px;
-
+  border-radius: 0;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-
 }
-
 
 .modal-info {
-
   margin-top: 16px;
-
   width: 100%;
-
   text-align: left;
-
 }
-
 
 .modal-title {
-
   display: inline-block;
-
   font-family: var(--sans);
-
   font-size: 1rem;
-
   font-weight: 600;
-
   color: var(--modal-title-color);
-
   margin-bottom: 4px;
-
   text-decoration: none;
-
 }
-
 
 .modal-title:hover {
-
   text-decoration: underline;
-
 }
-
 
 .modal-description {
-
   font-size: 0.88rem;
-
   color: var(--modal-desc-color);
-
 }
-
 
 .modal-close {
-
   all: unset;
-
   position: absolute;
-
   top: 20px;
-
   right: 20px;
-
   width: 40px;
-
   height: 40px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   color: var(--modal-desc-color);
-
   cursor: pointer;
-
   font-size: 1.4rem;
-
   transition: color 0.2s ease;
-
 }
-
 
 .modal-close:hover {
-
   color: var(--modal-title-color);
-
 }
-
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header id="siteHeader">
-
-
   <a class="logo" href="#top" id="top">
-
-    <img
-      src="logo.webp"
-      alt="Basu Saha logo"
-    >
-
+    <img src="logo.webp" alt="Basu Saha logo" width="28" height="28">
     <span>Basu Saha</span>
-
   </a>
 
-
-  <nav>
-
+  <nav aria-label="Primary Navigation">
     <a href="#work">Work</a>
-
     <a href="#about">About</a>
-
     <a href="#contact">Contact</a>
-
   </nav>
-
-
 </header>
 
+<main>
+  <section id="work" aria-label="Book Cover Portfolio">
+    <div class="gallery" id="gallery">
 
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="Astral Abyss • Nelson Mwova"
+          data-desc="Concept Cover design."
+          aria-label="View Astral Abyss by Nelson Mwova"
+        >
+          <img
+            src="astralabyssconcept.webp"
+            alt="Astral Abyss by Nelson Mwova — Concept book cover design"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </button>
+      </article>
 
-<section id="work">
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="The Night Train at Deoli • Ruskin Bond"
+          data-desc="Concept cover design for one of my most favourite short stories."
+          aria-label="View The Night Train at Deoli by Ruskin Bond"
+        >
+          <img
+            src="deolip.webp"
+            alt="The Night Train at Deoli by Ruskin Bond — Concept book cover design"
+            loading="eager"
+          >
+        </button>
+      </article>
 
-  <div class="gallery" id="gallery"></div>
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="Quiet Ruin"
+          data-desc="Cover Design for an upcoming debut novel"
+          aria-label="View Quiet Ruin"
+        >
+          <img
+            src="quiet.webp"
+            alt="Quiet Ruin — Book cover design for an upcoming debut novel"
+            loading="eager"
+          >
+        </button>
+      </article>
 
-</section>
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk"
+          data-desc="Concept Cover design."
+          aria-label="View Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk"
+        >
+          <img
+            src="drivered.webp"
+            alt="Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk — Concept book cover design"
+            loading="eager"
+          >
+        </button>
+      </article>
 
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="The Night Train at Deoli • Ruskin Bond"
+          data-desc="Concept cover design for one of my most favourite short stories."
+          aria-label="View The Night Train at Deoli by Ruskin Bond (Alternate Cover)"
+        >
+          <img
+            src="Deoli.webp"
+            alt="The Night Train at Deoli by Ruskin Bond — Alternate concept book cover design"
+            loading="eager"
+          >
+        </button>
+      </article>
 
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="The Eyes Have It • Ruskin Bond"
+          data-desc="Concept cover design."
+          aria-label="View The Eyes Have It by Ruskin Bond"
+        >
+          <img
+            src="theeyeshaveit.webp"
+            alt="The Eyes Have It by Ruskin Bond — Concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+      </article>
 
-<section id="about">
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="Astral Abyss • Nelson Mwova"
+          data-desc="Official cover design."
+          data-link="https://amzn.in/d/0fK2A5ND"
+          aria-label="View Astral Abyss by Nelson Mwova (Official Cover)"
+        >
+          <img
+            src="astralabyss.webp"
+            alt="Astral Abyss by Nelson Mwova — Official book cover design"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+      </article>
 
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="The Diary of a Young Girl • Anne Frank"
+          data-desc="Concept cover design in memory of Anne Frank."
+          aria-label="View The Diary of a Young Girl by Anne Frank"
+        >
+          <img
+            src="AnneFrank.webp"
+            alt="The Diary of a Young Girl by Anne Frank — Concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+      </article>
 
-  <div class="eyebrow">
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="White Nights • Fyodor Dostoevsky"
+          data-desc="Concept cover design."
+          aria-label="View White Nights by Fyodor Dostoevsky"
+        >
+          <img
+            src="whitenight.webp"
+            alt="White Nights by Fyodor Dostoevsky — Concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+      </article>
 
-    About
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk"
+          data-desc="Concept Cover design."
+          aria-label="View Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk (Alternate Cover)"
+        >
+          <img
+            src="Untitled_Artwork-10.webp"
+            alt="Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk — Alternate concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+      </article>
 
-  </div>
+    </div>
+  </section>
 
+  <section id="about">
+    <div class="eyebrow">About</div>
+    <h1 class="about-text">
+      Basu Saha is an independent book cover designer.
+    </h1>
+  </section>
 
-  <p class="about-text">
+  <section id="contact">
+    <div class="eyebrow">Contact</div>
 
-    Basu Saha is an independent book cover designer.
+    <div class="contact-email">
+      <a href="mailto:basusahadesign@gmail.com">basusahadesign@gmail.com</a>
+    </div>
 
-  </p>
-
-
-</section>
-
-
-
-<section id="contact">
-
-
-  <div class="eyebrow">
-
-    Contact
-
-  </div>
-
-
-  <div class="contact-email">
-
-    <a href="mailto:basusahadesign@gmail.com">
-
-      basusahadesign@gmail.com
-
+    <a
+      class="contact-link"
+      href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw=="
+      target="_blank"
+      rel="noopener"
+    >
+      Instagram ↗
     </a>
-
-  </div>
-
-
-  <a
-    class="contact-link"
-    href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw=="
-    target="_blank"
-    rel="noopener"
-  >
-
-    Instagram ↗
-
-  </a>
-
-
-</section>
-
-
+  </section>
+</main>
 
 <footer>
-
   <div>© 2026 Basu Saha</div>
-
   <div>Book Cover Designer</div>
-
 </footer>
-
-
 
 <div
   class="modal-overlay"
@@ -768,32 +590,17 @@ footer {
   aria-modal="true"
   aria-hidden="true"
 >
-
-
   <button
     class="modal-close"
     id="modalClose"
     aria-label="Close"
   >
-
     ×
-
   </button>
 
-
   <div class="modal-content">
-
-
-    <img
-      src=""
-      id="modalImg"
-      alt=""
-    >
-
-
+    <img src="" id="modalImg" alt="">
     <div class="modal-info">
-
-
       <a
         class="modal-title"
         id="modalTitle"
@@ -801,344 +608,86 @@ footer {
         target="_blank"
         rel="noopener"
       ></a>
-
-
-      <div
-        class="modal-description"
-        id="modalDesc"
-      ></div>
-
-
+      <div class="modal-description" id="modalDesc"></div>
     </div>
-
-
   </div>
-
-
 </div>
 
-
-
 <script>
-
-
-const covers = [
-
-
-  {
-
-    src: "astralabyssconcept.webp",
-
-    title: "Astral Abyss • Nelson Mwova",
-
-    desc: "Concept Cover design."
-
-  },
-
-{
-
-    src: "deolip.webp",
-
-    title: "The Night Train at Deoli • Ruskin Bond",
-
-    desc: "Concept cover design for one of my most favourite short stories."
-
-},
-
-  {
-
-    src: "quiet.webp",
-
-    title: "Quiet Ruin",
-
-    desc: "Cover Design for an upcoming debut novel"
-
-  },
-
-{
-
-    src: "drivered.webp",
-
-    title: "Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk",
-
-    desc: "Concept Cover design."
-
-  },
-
-  {
-
-    src: "Deoli.webp",
-
-    title: "The Night Train at Deoli • Ruskin Bond",
-
-    desc: "Concept cover design for one of my most favourite short stories."
-
-  },
-
-  {
-
-    src: "theeyeshaveit.webp",
-
-    title: "The Eyes Have It • Ruskin Bond",
-
-    desc: "Concept cover design."
-
-  },
-
-  {
-
-    src: "astralabyss.webp",
-
-    title: "Astral Abyss • Nelson Mwova",
-
-    desc: "Official cover design.",
-
-    link: "https://amzn.in/d/0fK2A5ND"
-
-  },
-
-{
-
-    src: "AnneFrank.webp",
-
-    title: "The Diary of a Young Girl • Anne Frank",
-
-    desc: "Concept cover design in memory of Anne Frank."
-
-  },
-  
-  {
-
-    src: "whitenight.webp",
-
-    title: "WHite NIght • Fyodor Dostoevsky",
-
-    desc: "Concept cover design."
-
-  },
-
-
-  {
-
-    src: "Untitled_Artwork-10.webp",
-
-    title: "Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk",
-
-    desc: "Concept Cover design."
-
-  }
-
-
-];
-
-
-
 const gallery = document.getElementById('gallery');
-
-
-
-gallery.innerHTML = covers.map((c, i) => `
-
-
-  <div class="gallery-item">
-
-
-    <button
-      data-index="${i}"
-      aria-label="View ${c.title}"
-    >
-
-
-      <img
-        src="${c.src}"
-        alt="${c.title}"
-        loading="${i < 4 ? 'eager' : 'lazy'}"
-      >
-
-
-    </button>
-
-
-  </div>
-
-
-`).join('');
-
-
-
 const modal = document.getElementById('imageModal');
-
 const modalImg = document.getElementById('modalImg');
-
 const modalTitle = document.getElementById('modalTitle');
-
 const modalDesc = document.getElementById('modalDesc');
-
 const modalClose = document.getElementById('modalClose');
-
 
 let lastFocused = null;
 
+function openModal(btn) {
+  const img = btn.querySelector('img');
+  const title = btn.dataset.title || '';
+  const desc = btn.dataset.desc || '';
+  const link = btn.dataset.link;
 
+  modalImg.src = img.currentSrc || img.src;
+  modalImg.alt = img.alt;
+  modalTitle.textContent = title;
+  modalDesc.textContent = desc;
 
-function openModal(index) {
-
-
-  const c = covers[index];
-
-
-  modalImg.src = c.src;
-
-  modalImg.alt = c.title;
-
-
-  modalTitle.textContent = c.title;
-
-  modalDesc.textContent = c.desc;
-
-
-
-  if (c.link) {
-
-
-    modalTitle.href = c.link;
-
+  if (link) {
+    modalTitle.href = link;
     modalTitle.target = "_blank";
-
     modalTitle.rel = "noopener";
-
-
     modalTitle.style.pointerEvents = "auto";
-
     modalTitle.style.cursor = "pointer";
-
-
   } else {
-
-
     modalTitle.removeAttribute("href");
-
     modalTitle.removeAttribute("target");
-
     modalTitle.removeAttribute("rel");
-
-
     modalTitle.style.pointerEvents = "none";
-
     modalTitle.style.cursor = "default";
-
-
   }
-
 
   lastFocused = document.activeElement;
-
-
   modal.classList.add('active');
-
   modal.setAttribute('aria-hidden', 'false');
-
-
   modalClose.focus();
-
-
 }
-
-
 
 function closeModal() {
-
-
   modal.classList.remove('active');
-
   modal.setAttribute('aria-hidden', 'true');
-
-
   if (lastFocused) {
-
     lastFocused.focus();
-
   }
-
-
 }
 
-
-
 gallery.addEventListener('click', (e) => {
-
-
-  const btn = e.target.closest('button[data-index]');
-
-
+  const btn = e.target.closest('button');
   if (btn) {
-
-    openModal(Number(btn.dataset.index));
-
+    openModal(btn);
   }
-
-
 });
-
-
 
 modal.addEventListener('click', (e) => {
-
-
   if (e.target === modal) {
-
     closeModal();
-
   }
-
-
 });
-
-
 
 modalClose.addEventListener('click', closeModal);
 
-
-
 document.addEventListener('keydown', (e) => {
-
-
-  if (
-    e.key === 'Escape' &&
-    modal.classList.contains('active')
-  ) {
-
+  if (e.key === 'Escape' && modal.classList.contains('active')) {
     closeModal();
-
   }
-
-
 });
 
-
-
 const header = document.getElementById('siteHeader');
-
-
-
 window.addEventListener('scroll', () => {
-
-
-  header.classList.toggle(
-
-    'scrolled',
-
-    window.scrollY > 8
-
-  );
-
-
+  header.classList.toggle('scrolled', window.scrollY > 8);
 }, { passive: true });
-
-
 </script>
 
-
 </body>
-
 </html>
