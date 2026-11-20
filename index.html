@@ -94,7 +94,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px var(--margin);
+  gap: 16px;
+  padding: 14px var(--margin);
   background: var(--header-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -109,17 +110,19 @@ header.scrolled {
 .logo {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   font-family: var(--sans);
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logo img {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -128,18 +131,43 @@ header.scrolled {
 nav {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2.5vw, 24px);
+  gap: 10px;
 }
 
 nav a {
   color: var(--ink-dim);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
   transition: color 0.2s ease;
 }
 
 nav a:hover {
   color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  header {
+    padding: 16px var(--margin);
+  }
+
+  .logo {
+    gap: 9px;
+    font-size: 1.05rem;
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav {
+    gap: 24px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
 }
 
 /* ---------- Gallery (Instagram-tight gutter) ---------- */
@@ -837,4 +865,4 @@ window.addEventListener('scroll', () => {
 </script>
 
 </body>
-  </html>
+</html>
