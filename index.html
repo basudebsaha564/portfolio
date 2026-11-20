@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0b0c">
-<meta name="description" content="Basu Saha — independent book cover designer and illustrator from India crafting handcrafted visual identities for authors and publishers.">
-<title>BASU SAHA — Book Cover Designer &amp; Illustrator</title>
+<meta name="description" content="Basu Saha — independent book cover designer crafting visual identities for authors and publishers.">
+<title>Basu Saha — Book Cover Designer</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/webp" href="logo.webp">
 
-<!-- Fonts: Newspaper & Literary Print Pairing -->
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Structured Data for Google Search -->
 <script type="application/ld+json">
@@ -28,28 +28,27 @@
     "https://www.threads.com/@basusaha_",
     "https://www.reddit.com/u/basusaha_/s/CUNNQTNdDy"
   ],
-  "description": "Independent book cover designer and illustrator from India crafting handcrafted visual identities for authors and publishers."
+  "description": "Independent book cover designer crafting visual identities for authors and publishers."
 }
 </script>
 
 <style>
 :root {
-  --display: 'Playfair Display', Georgia, "Times New Roman", serif;
-  --body: 'Newsreader', Georgia, "Times New Roman", serif;
-  --ui: 'Libre Franklin', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --margin: clamp(16px, 4vw, 48px);
-  --max-w: 1320px;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --gutter: 2px;
+  --margin: clamp(12px, 2.2vw, 24px);
 
-  /* Editorial Dark Palette */
+  /* Dark theme */
   --bg: #0b0b0c;
-  --bg-surface: #121214;
-  --header-bg: rgba(11, 11, 12, 0.9);
-  --line: #242429;
-  --line-strong: #38383f;
-  --ink: #f4f1ea;
-  --ink-dim: #95939a;
+  --bg-raised: #161618;
+  --header-bg: rgba(11, 11, 12, 0.84);
+  --line: #222226;
+  --ink: #f4f2ee;
+  --ink-dim: #8e8d94;
   --accent: #f5e400;
   --accent-ink: #0b0b0c;
+  --modal-title-color: #f4f2ee;
+  --modal-desc-color: #96959b;
 }
 
 * {
@@ -65,8 +64,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--body);
-  line-height: 1.6;
+  font-family: var(--sans);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -86,45 +85,44 @@ a {
   }
 }
 
-/* ---------- Header (Broadsheet Masthead Bar) ---------- */
+/* ---------- Header ---------- */
 
 header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--header-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line-strong);
-}
-
-.header-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 14px var(--margin);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  padding: 14px var(--margin);
+  background: var(--header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+header.scrolled {
+  border-bottom-color: var(--line);
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--display);
-  font-size: 1.12rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .logo img {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -133,17 +131,14 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 nav a {
-  font-family: var(--ui);
   color: var(--ink-dim);
   text-decoration: none;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
   transition: color 0.2s ease;
 }
 
@@ -152,214 +147,59 @@ nav a:hover {
 }
 
 @media (min-width: 768px) {
-  .header-inner {
-    padding: 18px var(--margin);
+  header {
+    padding: 16px var(--margin);
   }
 
   .logo {
-    font-size: 1.28rem;
+    gap: 9px;
+    font-size: 1.05rem;
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
   }
 
   nav {
-    gap: 28px;
+    gap: 24px;
   }
 
   nav a {
-    font-size: 0.74rem;
+    font-size: 0.9rem;
   }
 }
 
-/* ---------- Editorial Intro Statement ---------- */
-
-.intro-band {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: clamp(32px, 5vw, 56px) var(--margin) clamp(28px, 4vw, 44px);
-}
-
-.intro-lead {
-  font-family: var(--display);
-  font-size: clamp(1.45rem, 2.9vw, 2.15rem);
-  font-weight: 500;
-  line-height: 1.32;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  max-width: 820px;
-  margin: 0 0 14px 0;
-}
-
-.intro-lead em {
-  font-style: italic;
-  font-weight: 400;
-}
-
-.intro-sub {
-  font-family: var(--ui);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  margin: 0;
-}
-
-/* ---------- Featured Project Spotlight (Astral Abyss) ---------- */
-
-.featured-band {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: clamp(28px, 4vw, 48px) var(--margin) clamp(48px, 7vw, 80px);
-  border-top: 2px solid var(--line-strong);
-}
-
-.section-label {
-  font-family: var(--ui);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  margin-bottom: 24px;
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  align-items: center;
-}
-
-@media (min-width: 860px) {
-  .featured-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: clamp(36px, 5vw, 72px);
-  }
-}
-
-.featured-visual {
-  background: var(--bg-surface);
-  border: 1px solid var(--line);
-  padding: clamp(16px, 3vw, 32px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.featured-visual button {
-  all: unset;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-}
-
-.featured-visual img {
-  width: 100%;
-  max-height: 540px;
-  object-fit: contain;
-  display: block;
-  border-radius: 0;
-  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-
-.featured-visual button:hover img {
-  transform: scale(1.015);
-}
-
-.featured-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.featured-kicker {
-  font-family: var(--ui);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-.featured-title {
-  font-family: var(--display);
-  font-size: clamp(2rem, 3.8vw, 3.1rem);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 0 0 8px 0;
-}
-
-.featured-author {
-  font-family: var(--ui);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  margin: 0 0 20px 0;
-}
-
-.featured-desc {
-  font-family: var(--body);
-  font-size: 1.04rem;
-  line-height: 1.65;
-  color: var(--ink-dim);
-  max-width: 460px;
-  margin: 0 0 28px 0;
-}
-
-.editorial-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--ui);
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 4px;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.editorial-cta:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-/* ---------- Curated Cover Archive ---------- */
+/* ---------- Gallery (Instagram-tight gutter) ---------- */
 
 #work {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: clamp(40px, 6vw, 72px) var(--margin) clamp(56px, 8vw, 96px);
-  border-top: 1px solid var(--line);
+  padding: var(--gutter);
 }
 
 .gallery {
-  column-count: 2;
-  column-gap: clamp(14px, 2.4vw, 28px);
-}
-
-@media (min-width: 768px) {
-  .gallery {
-    column-count: 3;
-  }
-}
-
-@media (min-width: 1120px) {
-  .gallery {
-    column-count: 4;
-  }
+  column-count: 3;
+  column-gap: var(--gutter);
 }
 
 .gallery-item {
   break-inside: avoid;
-  margin-bottom: clamp(28px, 4vw, 44px);
+  margin-bottom: var(--gutter);
+  cursor: pointer;
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--bg-raised);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1), opacity 0.4s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-within img {
+  transform: scale(1.02);
 }
 
 .gallery-item button {
@@ -369,78 +209,57 @@ nav a:hover {
   cursor: pointer;
 }
 
-.cover-frame {
-  background: var(--bg-surface);
-  overflow: hidden;
-  border-radius: 0;
-}
+/* ---------- Desktop: 5 columns ---------- */
 
-.cover-frame img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0;
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 4px;
+  }
 
-.gallery-item button:hover .cover-frame img,
-.gallery-item button:focus-visible .cover-frame img {
-  transform: scale(1.025);
-}
+  #work {
+    padding: var(--gutter);
+  }
 
-.cover-caption {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid var(--line);
-}
+  .gallery {
+    column-count: 5;
+    column-gap: var(--gutter);
+  }
 
-.cover-author {
-  font-family: var(--ui);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  margin-bottom: 3px;
-}
-
-.cover-title {
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: 500;
-  line-height: 1.3;
-  color: var(--ink);
+  .gallery-item {
+    margin-bottom: var(--gutter);
+  }
 }
 
 /* ---------- About ---------- */
 
 #about {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: clamp(56px, 9vw, 96px) var(--margin);
-  border-top: 2px solid var(--line-strong);
+  padding: clamp(56px, 10vw, 100px) var(--margin);
+  border-top: 1px solid var(--line);
+  max-width: 720px;
 }
 
-.about-inner {
-  max-width: 740px;
+.eyebrow {
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+  margin-bottom: 16px;
 }
 
 .about-title {
-  font-family: var(--display);
-  font-size: clamp(1.55rem, 3vw, 2.2rem);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-family: var(--sans);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.45;
   color: var(--ink);
-  margin: 0 0 22px 0;
+  margin: 0 0 18px 0;
 }
 
 .about-body {
-  font-family: var(--body);
-  font-size: 1.06rem;
-  line-height: 1.72;
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--ink-dim);
-  margin: 0 0 18px 0;
+  margin: 0 0 16px 0;
 }
 
 .about-body:last-child {
@@ -451,9 +270,7 @@ nav a:hover {
 /* ---------- Process ---------- */
 
 #process {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: clamp(56px, 9vw, 96px) var(--margin);
+  padding: clamp(56px, 10vw, 100px) var(--margin);
   border-top: 1px solid var(--line);
 }
 
@@ -461,42 +278,39 @@ nav a:hover {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
-  margin-top: 12px;
+  max-width: 960px;
+  margin-top: 8px;
 }
 
 @media (min-width: 768px) {
   .process-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 44px 56px;
+    gap: 40px 48px;
   }
 }
 
 .process-step {
-  border-top: 1px solid var(--line-strong);
-  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
 }
 
 .step-num {
-  font-family: var(--ui);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--ink-dim);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .step-title {
-  font-family: var(--display);
-  font-size: 1.32rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--ink);
   margin: 0 0 8px 0;
 }
 
 .step-desc {
-  font-family: var(--body);
-  font-size: 1.02rem;
-  line-height: 1.68;
+  font-size: 0.94rem;
+  line-height: 1.6;
   color: var(--ink-dim);
   margin: 0;
 }
@@ -506,26 +320,20 @@ nav a:hover {
 #contact {
   background: var(--accent);
   color: var(--accent-ink);
-  padding: clamp(56px, 9vw, 96px) 0;
+  padding: clamp(56px, 10vw, 100px) var(--margin);
 }
 
-.contact-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--margin);
-}
-
-#contact .section-label {
+#contact .eyebrow {
   color: var(--accent-ink);
-  opacity: 0.72;
+  opacity: 0.7;
 }
 
 .contact-email {
-  font-family: var(--display);
-  font-size: clamp(1.65rem, 3.8vw, 2.65rem);
+  font-family: var(--sans);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   word-break: break-word;
 }
 
@@ -541,22 +349,19 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
 }
 
 .contact-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--ui);
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--accent-ink);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
   transition: opacity 0.2s ease;
 }
 
@@ -567,21 +372,13 @@ nav a:hover {
 /* ---------- Footer ---------- */
 
 footer {
-  background: var(--bg);
-  color: var(--ink-dim);
-  border-top: 1px solid var(--line);
-}
-
-.footer-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 20px var(--margin);
   display: flex;
   justify-content: space-between;
-  font-family: var(--ui);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  padding: 16px var(--margin);
+  background: var(--bg);
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--line);
 }
 
 /* ---------- Lightbox ---------- */
@@ -589,7 +386,7 @@ footer {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(4, 4, 5, 0.95);
+  background: rgba(4, 4, 5, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
@@ -609,7 +406,7 @@ footer {
 
 .modal-content {
   width: fit-content;
-  max-width: 460px;
+  max-width: 440px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -639,10 +436,10 @@ footer {
 
 .modal-title {
   display: inline-block;
-  font-family: var(--display);
-  font-size: 1.35rem;
+  font-family: var(--sans);
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--modal-title-color);
   margin-bottom: 4px;
   text-decoration: none;
 }
@@ -652,9 +449,8 @@ footer {
 }
 
 .modal-description {
-  font-family: var(--body);
-  font-size: 0.95rem;
-  color: var(--ink-dim);
+  font-size: 0.88rem;
+  color: var(--modal-desc-color);
 }
 
 .modal-close {
@@ -667,14 +463,14 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-dim);
+  color: var(--modal-desc-color);
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   transition: color 0.2s ease;
 }
 
 .modal-close:hover {
-  color: var(--ink);
+  color: var(--modal-title-color);
 }
 </style>
 </head>
@@ -682,298 +478,203 @@ footer {
 <body>
 
 <header id="siteHeader">
-  <div class="header-inner">
-    <a class="logo" href="#top" id="top">
-      <img src="logo.webp" alt="Basu Saha logo" width="24" height="24">
-      <span>Basu Saha</span>
-    </a>
+  <a class="logo" href="#top" id="top">
+    <img src="logo.webp" alt="Basu Saha logo" width="28" height="28">
+    <span>Basu Saha</span>
+  </a>
 
-    <nav aria-label="Primary Navigation">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+  <nav aria-label="Primary Navigation">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <main>
-  <!-- Editorial Statement -->
-  <section class="intro-band" aria-label="Introduction">
-    <p class="intro-lead">
-      Basu Saha is an independent book cover designer and illustrator crafting <em>handcrafted visual identities</em> for authors and publishers.
-    </p>
-    <p class="intro-sub">Hand Illustrated &bull; Zero Generative AI &bull; India</p>
-  </section>
-
-  <!-- Featured Commission at Top -->
-  <section class="featured-band" aria-label="Featured Cover Commission">
-    <div class="section-label">Featured Release</div>
-
-    <div class="featured-grid">
-      <div class="featured-visual">
-        <button
-          type="button"
-          data-title="Astral Abyss &bull; Nelson Mwova"
-          data-desc="Official published cover design."
-          data-link="https://amzn.in/d/0fK2A5ND"
-          aria-label="Inspect Astral Abyss official book cover"
-        >
-          <img
-            src="astralabyss.webp"
-            alt="Astral Abyss by Nelson Mwova — Official published book cover design"
-            loading="eager"
-            fetchpriority="high"
-          >
-        </button>
-      </div>
-
-      <div class="featured-meta">
-        <div class="featured-kicker">Published Commission</div>
-        <h1 class="featured-title">Astral Abyss</h1>
-        <p class="featured-author">Written by Nelson Mwova</p>
-        <p class="featured-desc">
-          Official cover illustration and full wrap typography designed for print and digital release. Created from initial story discovery through final press ready production.
-        </p>
-        <a
-          class="editorial-cta"
-          href="https://amzn.in/d/0fK2A5ND"
-          target="_blank"
-          rel="noopener"
-        >
-          View on Amazon &#8599;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selected Covers Grid with Visible Editorial Captions -->
-  <section id="work" aria-label="Selected Book Covers">
-    <div class="section-label">Selected Covers</div>
-
+  <section id="work" aria-label="Book Cover Portfolio">
     <div class="gallery" id="gallery">
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="Astral Abyss &bull; Nelson Mwova"
-          data-desc="Early concept cover exploration."
-          aria-label="View Astral Abyss Concept Cover"
+          data-title="Astral Abyss • Nelson Mwova"
+          data-desc="Concept Cover design."
+          aria-label="View Astral Abyss by Nelson Mwova"
         >
-          <div class="cover-frame">
-            <img
-              src="astralabyssconcept.webp"
-              alt="Astral Abyss by Nelson Mwova — Concept book cover design"
-              loading="eager"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Nelson Mwova &bull; Concept</div>
-            <div class="cover-title">Astral Abyss (Concept Study)</div>
-          </div>
+          <img
+            src="astralabyssconcept.webp"
+            alt="Astral Abyss by Nelson Mwova — Concept book cover design"
+            loading="eager"
+            fetchpriority="high"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="The Night Train at Deoli &bull; Ruskin Bond"
+          data-title="The Night Train at Deoli • Ruskin Bond"
           data-desc="Concept cover design for one of my most favourite short stories."
           aria-label="View The Night Train at Deoli by Ruskin Bond"
         >
-          <div class="cover-frame">
-            <img
-              src="deolip.webp"
-              alt="The Night Train at Deoli by Ruskin Bond — Concept book cover design"
-              loading="eager"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Ruskin Bond</div>
-            <div class="cover-title">The Night Train at Deoli</div>
-          </div>
+          <img
+            src="deolip.webp"
+            alt="The Night Train at Deoli by Ruskin Bond — Concept book cover design"
+            loading="eager"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="Quiet Ruin &bull; Alex Richardson"
-          data-desc="Cover design for an upcoming debut novel."
+          data-title="Quiet Ruin"
+          data-desc="Cover Design for an upcoming debut novel"
           aria-label="View Quiet Ruin"
         >
-          <div class="cover-frame">
-            <img
-              src="quiet.webp"
-              alt="Quiet Ruin — Book cover design for an upcoming debut novel"
-              loading="eager"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Alex Richardson</div>
-            <div class="cover-title">Quiet Ruin</div>
-          </div>
+          <img
+            src="quiet.webp"
+            alt="Quiet Ruin — Book cover design for an upcoming debut novel"
+            loading="eager"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="Drive Your Plow Over the Bones of the Dead &bull; Olga Tokarczuk"
-          data-desc="Concept cover design."
+          data-title="Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk"
+          data-desc="Concept Cover design."
           aria-label="View Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk"
         >
-          <div class="cover-frame">
-            <img
-              src="drivered.webp"
-              alt="Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk — Concept book cover design"
-              loading="eager"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Olga Tokarczuk</div>
-            <div class="cover-title">Drive Your Plow Over the Bones of the Dead</div>
-          </div>
+          <img
+            src="drivered.webp"
+            alt="Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk — Concept book cover design"
+            loading="eager"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="The Night Train at Deoli &bull; Ruskin Bond"
-          data-desc="Alternate concept cover design."
-          aria-label="View The Night Train at Deoli Alternate Cover"
+          data-title="The Night Train at Deoli • Ruskin Bond"
+          data-desc="Concept cover design for one of my most favourite short stories."
+          aria-label="View The Night Train at Deoli by Ruskin Bond (Alternate Cover)"
         >
-          <div class="cover-frame">
-            <img
-              src="Deoli.webp"
-              alt="The Night Train at Deoli by Ruskin Bond — Alternate concept book cover design"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Ruskin Bond &bull; Alternate</div>
-            <div class="cover-title">The Night Train at Deoli</div>
-          </div>
+          <img
+            src="Deoli.webp"
+            alt="The Night Train at Deoli by Ruskin Bond — Alternate concept book cover design"
+            loading="eager"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="The Eyes Have It &bull; Ruskin Bond"
+          data-title="The Eyes Have It • Ruskin Bond"
           data-desc="Concept cover design."
           aria-label="View The Eyes Have It by Ruskin Bond"
         >
-          <div class="cover-frame">
-            <img
-              src="theeyeshaveit.webp"
-              alt="The Eyes Have It by Ruskin Bond — Concept book cover design"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Ruskin Bond</div>
-            <div class="cover-title">The Eyes Have It</div>
-          </div>
+          <img
+            src="theeyeshaveit.webp"
+            alt="The Eyes Have It by Ruskin Bond — Concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="The Diary of a Young Girl &bull; Anne Frank"
+          data-title="Astral Abyss • Nelson Mwova"
+          data-desc="Official cover design."
+          data-link="https://amzn.in/d/0fK2A5ND"
+          aria-label="View Astral Abyss by Nelson Mwova (Official Cover)"
+        >
+          <img
+            src="astralabyss.webp"
+            alt="Astral Abyss by Nelson Mwova — Official book cover design"
+            loading="lazy"
+            decoding="async"
+          >
+        </button>
+      </article>
+
+      <article class="gallery-item">
+        <button
+          type="button"
+          data-title="The Diary of a Young Girl • Anne Frank"
           data-desc="Concept cover design in memory of Anne Frank."
           aria-label="View The Diary of a Young Girl by Anne Frank"
         >
-          <div class="cover-frame">
-            <img
-              src="AnneFrank.webp"
-              alt="The Diary of a Young Girl by Anne Frank — Concept book cover design"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Anne Frank</div>
-            <div class="cover-title">The Diary of a Young Girl</div>
-          </div>
+          <img
+            src="AnneFrank.webp"
+            alt="The Diary of a Young Girl by Anne Frank — Concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="White Nights &bull; Fyodor Dostoevsky"
+          data-title="White Nights • Fyodor Dostoevsky"
           data-desc="Concept cover design."
           aria-label="View White Nights by Fyodor Dostoevsky"
         >
-          <div class="cover-frame">
-            <img
-              src="whitenight.webp"
-              alt="White Nights by Fyodor Dostoevsky — Concept book cover design"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Fyodor Dostoevsky</div>
-            <div class="cover-title">White Nights</div>
-          </div>
+          <img
+            src="whitenight.webp"
+            alt="White Nights by Fyodor Dostoevsky — Concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
         </button>
       </article>
 
       <article class="gallery-item">
         <button
           type="button"
-          data-title="Drive Your Plow Over the Bones of the Dead &bull; Olga Tokarczuk"
-          data-desc="Alternate concept cover design."
-          aria-label="View Drive Your Plow Over the Bones of the Dead Alternate Cover"
+          data-title="Drive Your Plow Over the Bones of the Dead • Olga Tokarczuk"
+          data-desc="Concept Cover design."
+          aria-label="View Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk (Alternate Cover)"
         >
-          <div class="cover-frame">
-            <img
-              src="Untitled_Artwork-10.webp"
-              alt="Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk — Alternate concept book cover design"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="cover-caption">
-            <div class="cover-author">Olga Tokarczuk &bull; Alternate</div>
-            <div class="cover-title">Drive Your Plow Over the Bones of the Dead</div>
-          </div>
+          <img
+            src="Untitled_Artwork-10.webp"
+            alt="Drive Your Plow Over the Bones of the Dead by Olga Tokarczuk — Alternate concept book cover design"
+            loading="lazy"
+            decoding="async"
+          >
         </button>
       </article>
 
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
-    <div class="about-inner">
-      <div class="section-label">About</div>
-      <h2 class="about-title">
-        I am an independent book cover designer from India.
-      </h2>
-      <p class="about-body">
-        I started drawing when I was just three, and even while completing my Physics Honours degree, I never stopped drawing. Later, I introduced myself to graphic design and typography through books and online courses, and realized I could finally combine my love for illustration with my habit of reading.
-      </p>
-      <p class="about-body">
-        Today, I design book covers for authors to help their stories reach the people who need them.
-      </p>
-    </div>
+    <div class="eyebrow">About</div>
+    <h1 class="about-title">
+      I am an independent book cover designer from India.
+    </h1>
+    <p class="about-body">
+      I started drawing when I was just three, and even while completing my Physics Honours degree, I never stopped drawing. Later, I introduced myself to graphic design and typography through books and online courses, and realized I could finally combine my love for illustration with my habit of reading.
+    </p>
+    <p class="about-body">
+      Today, I design book covers for authors to help their stories reach the people who need them.
+    </p>
   </section>
 
-  <!-- Process -->
   <section id="process">
-    <div class="section-label">Process</div>
+    <div class="eyebrow">Process</div>
     <div class="process-list">
 
       <div class="process-step">
         <div class="step-num">01</div>
-        <h3 class="step-title">Discovery</h3>
+        <h2 class="step-title">Discovery</h2>
         <p class="step-desc">
           If the manuscript is ready, I start by reading the book. If it is still in progress, I send a detailed questionnaire covering the synopsis, underlying themes, characters and their relationships, the environment, key visual cues, and the technical specifications required for production.
         </p>
@@ -981,7 +682,7 @@ footer {
 
       <div class="process-step">
         <div class="step-num">02</div>
-        <h3 class="step-title">Genre Research</h3>
+        <h2 class="step-title">Genre Research</h2>
         <p class="step-desc">
           Once I understand the book, I study its genre thoroughly to see what resonates with readers, what feels repetitive, and how to make the cover fit its category while remaining distinct.
         </p>
@@ -989,7 +690,7 @@ footer {
 
       <div class="process-step">
         <div class="step-num">03</div>
-        <h3 class="step-title">The Brief</h3>
+        <h2 class="step-title">The Brief</h2>
         <p class="step-desc">
           Together with the author, I put together a focused design brief. Having a clear brief keeps the vision sharp so we are both aligned on the tone and direction before any design work begins.
         </p>
@@ -997,7 +698,7 @@ footer {
 
       <div class="process-step">
         <div class="step-num">04</div>
-        <h3 class="step-title">Cover Concepts</h3>
+        <h2 class="step-title">Cover Concepts</h2>
         <p class="step-desc">
           Rather than presenting abstract mood boards that can be difficult to visualize (I keep visual direction studies strictly for my own internal reference), I move straight into exploring several initial front cover concepts. You can see tangible directions, choose the one that fits best, and we refine it together.
         </p>
@@ -1005,7 +706,7 @@ footer {
 
       <div class="process-step">
         <div class="step-num">05</div>
-        <h3 class="step-title">Full Wrap &amp; Print Files</h3>
+        <h2 class="step-title">Full Wrap &amp; Print Files</h2>
         <p class="step-desc">
           After the front cover is finalized, I design the spine and back cover to complete the full wrap, then prepare the final files ready for print and digital publishing.
         </p>
@@ -1013,7 +714,7 @@ footer {
 
       <div class="process-step">
         <div class="step-num">06</div>
-        <h3 class="step-title">Handcrafted, Zero AI</h3>
+        <h2 class="step-title">Handcrafted, Zero AI</h2>
         <p class="step-desc">
           Every illustration is drawn by hand in Procreate on my iPad, and all typography, layout, and print preparation are built using Affinity or Adobe design tools. When a cover uses photography or archival imagery, I source it from public domain collections and verify each license before using it. I do not use generative AI or AI generated artwork anywhere in my cover design process.
         </p>
@@ -1022,52 +723,47 @@ footer {
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
-    <div class="contact-inner">
-      <div class="section-label">Contact</div>
+    <div class="eyebrow">Contact</div>
 
-      <div class="contact-email">
-        <a href="mailto:basusahadesign@gmail.com">basusahadesign@gmail.com</a>
-      </div>
+    <div class="contact-email">
+      <a href="mailto:basusahadesign@gmail.com">basusahadesign@gmail.com</a>
+    </div>
 
-      <div class="contact-socials">
-        <a
-          class="contact-link"
-          href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw=="
-          target="_blank"
-          rel="noopener"
-        >
-          Instagram &#8599;
-        </a>
+    <div class="contact-socials">
+      <a
+        class="contact-link"
+        href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw=="
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram ↗
+      </a>
 
-        <a
-          class="contact-link"
-          href="https://www.threads.com/@basusaha_"
-          target="_blank"
-          rel="noopener"
-        >
-          Threads &#8599;
-        </a>
+      <a
+        class="contact-link"
+        href="https://www.threads.com/@basusaha_"
+        target="_blank"
+        rel="noopener"
+      >
+        Threads ↗
+      </a>
 
-        <a
-          class="contact-link"
-          href="https://www.reddit.com/u/basusaha_/s/CUNNQTNdDy"
-          target="_blank"
-          rel="noopener"
-        >
-          Reddit &#8599;
-        </a>
-      </div>
+      <a
+        class="contact-link"
+        href="https://www.reddit.com/u/basusaha_/s/CUNNQTNdDy"
+        target="_blank"
+        rel="noopener"
+      >
+        Reddit ↗
+      </a>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <div>&copy; 2026 Basu Saha</div>
-    <div>Book Cover Designer</div>
-  </div>
+  <div>© 2026 Basu Saha</div>
+  <div>Book Cover Designer</div>
 </footer>
 
 <div
@@ -1082,7 +778,7 @@ footer {
     id="modalClose"
     aria-label="Close"
   >
-    &times;
+    ×
   </button>
 
   <div class="modal-content">
@@ -1101,6 +797,7 @@ footer {
 </div>
 
 <script>
+const gallery = document.getElementById('gallery');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
 const modalTitle = document.getElementById('modalTitle');
@@ -1148,8 +845,8 @@ function closeModal() {
   }
 }
 
-document.querySelector('main').addEventListener('click', (e) => {
-  const btn = e.target.closest('button[data-title]');
+gallery.addEventListener('click', (e) => {
+  const btn = e.target.closest('button');
   if (btn) {
     openModal(btn);
   }
@@ -1168,7 +865,12 @@ document.addEventListener('keydown', (e) => {
     closeModal();
   }
 });
+
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
 </script>
 
 </body>
-        </html>
+      </html>
