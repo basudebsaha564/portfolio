@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0b0c">
-<meta name="description" content="Basu Saha — independent book cover designer crafting visual identities for authors and publishers.">
-<title>Basu Saha — Book Cover Designer</title>
+<meta name="description" content="Basu Saha — independent book cover designer and illustrator crafting visual identities for authors and publishers.">
+<title>Basu Saha — Book Cover Designer and Illustrator</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/webp" href="logo.webp">
@@ -21,14 +21,19 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Basu Saha",
-  "jobTitle": "Book Cover Designer",
+  "jobTitle": "Book Cover Designer and Illustrator",
   "email": "mailto:basusahadesign@gmail.com",
+  "knowsAbout": [
+    "Book Cover Design",
+    "Illustration",
+    "Typography"
+  ],
   "sameAs": [
     "https://www.instagram.com/basusaha_",
     "https://www.threads.com/@basusaha_",
     "https://www.reddit.com/u/basusaha_/s/CUNNQTNdDy"
   ],
-  "description": "Independent book cover designer crafting visual identities for authors and publishers."
+  "description": "Independent book cover designer and illustrator crafting visual identities for authors and publishers."
 }
 </script>
 
@@ -263,48 +268,17 @@ nav a:hover {
   }
 }
 
-/* ---------- About ---------- */
+/* ---------- Process ---------- */
 
-#about {
+#process {
   padding: clamp(56px, 10vw, 100px) var(--margin);
   border-top: 1px solid var(--line);
-  max-width: 720px;
 }
 
 .eyebrow {
   font-size: 0.8rem;
   color: var(--ink-dim);
   margin-bottom: 16px;
-}
-
-.about-title {
-  font-family: var(--sans);
-  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--ink);
-  margin: 0 0 18px 0;
-}
-
-.about-body {
-  font-family: var(--sans);
-  font-size: clamp(1rem, 1.8vw, 1.12rem);
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--ink-dim);
-  margin: 0 0 16px 0;
-}
-
-.about-body:last-child {
-  margin-bottom: 0;
-  color: var(--ink);
-}
-
-/* ---------- Process ---------- */
-
-#process {
-  padding: clamp(56px, 10vw, 100px) var(--margin);
-  border-top: 1px solid var(--line);
 }
 
 .process-list {
@@ -346,6 +320,37 @@ nav a:hover {
   line-height: 1.6;
   color: var(--ink-dim);
   margin: 0;
+}
+
+/* ---------- About ---------- */
+
+#about {
+  padding: clamp(56px, 10vw, 100px) var(--margin);
+  border-top: 1px solid var(--line);
+  max-width: 720px;
+}
+
+.about-title {
+  font-family: var(--sans);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 20px 0;
+}
+
+.about-body {
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.68;
+  color: var(--ink-dim);
+  margin: 0 0 18px 0;
+}
+
+.about-body:last-child {
+  margin-bottom: 0;
+  color: var(--ink);
 }
 
 /* ---------- Contact ---------- */
@@ -518,13 +523,13 @@ footer {
 
   <nav aria-label="Primary Navigation">
     <a href="#work">Work</a>
-    <a href="#about">About</a>
     <a href="#process">Process</a>
+    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<main>
+<main id="siteMain">
   <section id="work" aria-label="Book Cover Portfolio">
     <div class="gallery" id="gallery">
 
@@ -754,19 +759,6 @@ footer {
     </div>
   </section>
 
-  <section id="about">
-    <div class="eyebrow">About</div>
-    <h1 class="about-title">
-      I'm Basu Saha, a book-cover designer and illustrator specialising in concept-driven cover design, original illustration and typography.
-    </h1>
-    <p class="about-body">
-      I started drawing when I was just three, and even while completing my Physics Honours degree, I never stopped drawing. Later, I introduced myself to graphic design and typography through books and online courses, and realized I could finally combine my love for illustration with my habit of reading.
-    </p>
-    <p class="about-body">
-      Today, I design book covers for authors to help their stories reach the people who need them.
-    </p>
-  </section>
-
   <section id="process">
     <div class="eyebrow">Process</div>
     <div class="process-list">
@@ -822,6 +814,28 @@ footer {
     </div>
   </section>
 
+  <section id="about">
+    <div class="eyebrow">About</div>
+    <h1 class="about-title">
+      Hi, I'm Basu Saha, a book cover designer and illustrator. I love designing illustrative as well as conceptual covers.
+    </h1>
+    <p class="about-body">
+      I started drawing when I was three, and I never stopped. I grew up in Kolkata, where I trained in fine arts from the age of five to thirteen. I learned to work in different mediums, from oil pastels and colour pencils to watercolours and oil paints.
+    </p>
+    <p class="about-body">
+      After finishing school, I went on to study physics as my honours subject. But I never stopped exploring art, and how it's used in the modern world. I became curious about how design shapes our everyday lives, and how art can make a good design more impactful. It goes beyond functionality and makes us feel something more. After my bachelor's degree, I realised design was where I belonged. I taught myself graphic design, and over time I saw that I could combine my love of drawing with my love of reading.
+    </p>
+    <p class="about-body">
+      I've loved books since school. I read storybooks and novels, and my favourite authors were Ruskin Bond, R.K. Narayan, O. Henry and Oscar Wilde. I loved poetry too, and Wordsworth's work was especially inspiring. I also read a lot of books in Bengali, from Tagore to Satyajit Ray, and many more. After college I started buying illustrated children's books. They felt whimsical, and stepping into those worlds was a nice escape from real life.
+    </p>
+    <p class="about-body">
+      Later I got into non-fiction as well, mostly technology, psychology and social science. In the last two years I've been reading more contemporary fiction. I find magical realism really interesting, and I'm especially drawn to Murakami's work. From time to time I also listen to audiobooks, especially immersive stories where nature is almost a character, and I can get lost in that world.
+    </p>
+    <p class="about-body">
+      Now I design book covers for authors to help their stories reach the people who need them.
+    </p>
+  </section>
+
   <section id="contact">
     <div class="eyebrow">Contact</div>
 
@@ -832,7 +846,7 @@ footer {
     <div class="contact-socials">
       <a
         class="contact-link"
-        href="https://www.instagram.com/basusaha_?stkn=MXM4NjQ2M2YyZ3M5cw=="
+        href="https://www.instagram.com/basusaha_"
         target="_blank"
         rel="noopener"
       >
@@ -860,9 +874,9 @@ footer {
   </section>
 </main>
 
-<footer>
+<footer id="siteFooter">
   <div>© 2026 Basu Saha</div>
-  <div>Book Cover Designer</div>
+  <div>Book Cover Designer and Illustrator</div>
 </footer>
 
 <div
@@ -896,6 +910,9 @@ footer {
 </div>
 
 <script>
+const header = document.getElementById('siteHeader');
+const main = document.getElementById('siteMain');
+const footer = document.getElementById('siteFooter');
 const gallery = document.getElementById('gallery');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
@@ -904,6 +921,12 @@ const modalDesc = document.getElementById('modalDesc');
 const modalClose = document.getElementById('modalClose');
 
 let lastFocused = null;
+
+function setBackgroundInert(state) {
+  header.inert = state;
+  main.inert = state;
+  footer.inert = state;
+}
 
 function openModal(btn) {
   const img = btn.querySelector('img');
@@ -931,6 +954,8 @@ function openModal(btn) {
   }
 
   lastFocused = document.activeElement;
+  document.body.style.overflow = 'hidden';
+  setBackgroundInert(true);
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
   modalClose.focus();
@@ -939,6 +964,8 @@ function openModal(btn) {
 function closeModal() {
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  setBackgroundInert(false);
   if (lastFocused) {
     lastFocused.focus();
   }
@@ -965,7 +992,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-const header = document.getElementById('siteHeader');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 8);
 }, { passive: true });
